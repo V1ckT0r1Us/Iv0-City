@@ -6,189 +6,320 @@
   <title>IVO CITY Pvt Ltd - Grow Together</title>
   <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: 'Montserrat', Arial, sans-serif;
+    :root {
+      --primary: #2a9d8f;
+      --accent: #e9c46a;
+      --dark: #264653;
+      --light: #f8fafc;
+      --white: #fff;
+      --shadow: 0 4px 24px rgba(0,0,0,0.07);
+    }
+    html, body {
+      height: 100%;
       margin: 0;
-      background: #f8fafc;
-      color: #22223b;
-      overflow-x: hidden;
+      padding: 0;
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: var(--light);
+      color: var(--dark);
     }
-    header {
-      background: #2a9d8f;
-      color: white;
-      padding: 2rem 1rem;
-      text-align: center;
-      animation: slideDown 1s ease forwards;
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
+    /* Sticky Nav */
     nav {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background: var(--primary);
       display: flex;
       justify-content: center;
+      align-items: center;
       gap: 2rem;
-      margin-bottom: 1rem;
-      opacity: 0;
-      animation: fadeIn 2s ease 1s forwards;
+      padding: 1rem 0;
+      z-index: 99;
+      box-shadow: var(--shadow);
+      transition: background 0.3s;
     }
     nav a {
-      color: white;
+      color: var(--white);
       text-decoration: none;
       font-weight: bold;
-      transition: color 0.2s;
+      letter-spacing: 1px;
+      font-size: 1.1rem;
+      padding: 0.5rem 1rem;
+      border-radius: 3px;
+      transition: background 0.2s, color 0.2s;
     }
-    nav a:hover {
-      color: #ffd166;
+    nav a:hover, nav a.active {
+      background: var(--accent);
+      color: var(--dark);
     }
-    .hero {
-      padding: 3rem 1rem;
+    header {
+      padding: 2.5rem 1rem 2rem 1rem;
       text-align: center;
-      background: #e9c46a;
-      color: #22223b;
-      animation: fadeIn 2s ease 1.5s forwards;
-      opacity: 0;
+      background: none;
     }
-    .hero h1 {
-      font-size: 2.5rem;
+    header h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 0 0 0.5rem 0;
+      letter-spacing: 2px;
+    }
+    header p {
+      font-size: 1.3rem;
+      color: var(--dark);
+      margin: 0;
+      letter-spacing: 1px;
+    }
+    /* Hero Section */
+    .hero {
+      position: relative;
+      background: linear-gradient(rgba(42,157,143,0.7),rgba(42,157,143,0.7)), url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+      color: var(--white);
+      padding: 5rem 1rem 4rem 1rem;
+      text-align: center;
+      border-radius: 16px;
+      margin: 0 auto 2.5rem auto;
+      max-width: 1100px;
+      box-shadow: var(--shadow);
+    }
+    .hero h2 {
+      font-size: 2.2rem;
       margin-bottom: 1rem;
-      animation: slideInLeft 1s ease forwards;
+      font-weight: 700;
+      letter-spacing: 1px;
     }
     .hero p {
       font-size: 1.2rem;
       margin-bottom: 2rem;
-      animation: slideInRight 1s ease forwards;
+      color: var(--light);
     }
     .cta-btn {
-      background: #2a9d8f;
-      color: white;
-      padding: 1rem 2rem;
+      background: var(--accent);
+      color: var(--dark);
+      padding: 1rem 2.5rem;
       border: none;
-      border-radius: 4px;
-      font-size: 1rem;
+      border-radius: 25px;
+      font-size: 1.1rem;
+      font-weight: bold;
       cursor: pointer;
-      transition: background 0.2s, transform 0.3s;
-      animation: fadeIn 2s ease 2s forwards;
-      opacity: 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.09);
+      transition: background 0.2s, transform 0.2s;
+      letter-spacing: 1px;
     }
     .cta-btn:hover {
-      background: #264653;
-      transform: scale(1.05);
+      background: var(--primary);
+      color: var(--white);
+      transform: translateY(-3px) scale(1.04);
     }
-    .features, .testimonials, .contact {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 1rem;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      opacity: 0;
-      animation: fadeInUp 1s ease forwards;
-    }
+    /* Features Section */
     .features {
-      animation-delay: 2.5s;
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-    .testimonials {
-      animation-delay: 3s;
-    }
-    .contact {
-      animation-delay: 3.5s;
-    }
-    .features h2, .testimonials h2, .contact h2 {
-      color: #2a9d8f;
-      margin-bottom: 1rem;
+    .features h2 {
+      color: var(--primary);
+      margin-bottom: 2rem;
+      font-size: 2rem;
+      letter-spacing: 1px;
     }
     .features-list {
       display: flex;
       flex-wrap: wrap;
-      gap: 1.5rem;
-      justify-content: space-around;
+      gap: 2rem;
+      justify-content: center;
+      width: 100%;
     }
-    .feature {
-      flex: 1 1 200px;
-      background: #f1faee;
-      padding: 1rem;
-      border-radius: 6px;
+    .feature-card {
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      flex: 1 1 220px;
+      max-width: 260px;
+      min-width: 200px;
+      padding: 2rem 1.2rem;
       text-align: center;
-      transition: transform 0.3s;
+      transition: transform 0.25s, box-shadow 0.25s;
+      border-top: 5px solid var(--primary);
     }
-    .feature:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    .feature-card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 8px 32px rgba(42,157,143,0.18);
+      border-top: 5px solid var(--accent);
     }
-    .testimonials blockquote {
+    .feature-card h3 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+    /* Testimonials Carousel */
+    .testimonials {
+      max-width: 700px;
+      margin: 2.5rem auto;
+      padding: 2rem 1rem 1.5rem 1rem;
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      text-align: center;
+      position: relative;
+    }
+    .testimonials h2 {
+      color: var(--primary);
+      margin-bottom: 2rem;
+      font-size: 2rem;
+    }
+    .testimonial-slide {
+      display: none;
       font-style: italic;
-      color: #555;
-      margin: 1rem 0;
-      border-left: 4px solid #2a9d8f;
-      padding-left: 1rem;
-      animation: fadeIn 1s ease forwards;
+      color: #444;
+      font-size: 1.15rem;
+      min-height: 70px;
+    }
+    .testimonial-slide.active {
+      display: block;
+      animation: fadeIn 0.8s;
+    }
+    .testimonial-author {
+      margin-top: 0.8rem;
+      color: var(--primary);
+      font-weight: bold;
+      font-size: 1rem;
+      letter-spacing: 1px;
+    }
+    .testimonial-controls {
+      margin-top: 1.2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .testimonial-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #ddd;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .testimonial-dot.active {
+      background: var(--primary);
+    }
+    /* Contact Section */
+    .contact {
+      max-width: 600px;
+      margin: 2rem auto 3rem auto;
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      padding: 2rem 1.5rem 1.5rem 1.5rem;
+      text-align: center;
+    }
+    .contact h2 {
+      color: var(--primary);
+      margin-bottom: 1.2rem;
+      font-size: 2rem;
     }
     .contact-info {
-      text-align: center;
       font-size: 1.1rem;
+      color: var(--dark);
+      line-height: 1.7;
     }
-    @media (max-width: 600px) {
+    .contact-info a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+    .contact-info a:hover {
+      color: var(--accent);
+    }
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: var(--white);
+      text-align: center;
+      padding: 1.2rem 0 0.7rem 0;
+      font-size: 1rem;
+      margin-top: auto;
+      letter-spacing: 1px;
+    }
+    /* Responsive */
+    @media (max-width: 900px) {
       .features-list {
         flex-direction: column;
-        gap: 1rem;
+        align-items: center;
+      }
+      .feature-card {
+        max-width: 95vw;
+      }
+      .hero {
+        padding: 3rem 1rem 2.5rem 1rem;
       }
     }
-
-    /* Animations */
-    @keyframes slideDown {
-      0% { transform: translateY(-100%); opacity: 0; }
-      100% { transform: translateY(0); opacity: 1; }
+    @media (max-width: 600px) {
+      nav {
+        gap: 1rem;
+        padding: 0.7rem 0;
+      }
+      header h1 {
+        font-size: 2rem;
+      }
+      .hero {
+        padding: 2rem 0.5rem 1.5rem 0.5rem;
+      }
+      .features, .testimonials, .contact {
+        padding: 1rem 0.3rem;
+      }
     }
     @keyframes fadeIn {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
-    }
-    @keyframes slideInLeft {
-      0% { transform: translateX(-100%); opacity: 0; }
-      100% { transform: translateX(0); opacity: 1; }
-    }
-    @keyframes slideInRight {
-      0% { transform: translateX(100%); opacity: 0; }
-      100% { transform: translateX(0); opacity: 1; }
-    }
-    @keyframes fadeInUp {
-      0% { transform: translateY(20px); opacity: 0; }
-      100% { transform: translateY(0); opacity: 1; }
+      0% { opacity: 0;}
+      100% { opacity: 1;}
     }
   </style>
 </head>
 <body>
+  <nav>
+    <a href="#home" class="active">Home</a>
+    <a href="#features">Features</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
   <header>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#features">Features</a>
-      <a href="#testimonials">Testimonials</a>
-      <a href="#contact">Contact</a>
-    </nav>
     <h1>IVO CITY Pvt Ltd</h1>
     <p>Where we grow together</p>
   </header>
 
   <section class="hero" id="home">
-    <h1>Start Your Investment Journey Today</h1>
+    <h2>Start Your Investment Journey Today</h2>
     <p>Join a trusted group and invest in real business projects from as little as $20. Open to individuals, schools, churches, and entrepreneurs of all ages and income levels.</p>
     <a href="Iv0City.html" class="cta-btn">Get Started</a>
-
   </section>
 
   <section class="features" id="features">
     <h2>Why Choose IVO CITY?</h2>
     <div class="features-list">
-      <div class="feature">
+      <div class="feature-card">
         <h3>Low Entry Barrier</h3>
         <p>Invest from as little as $20 or $50 and become a business owner today.</p>
       </div>
-      <div class="feature">
+      <div class="feature-card">
         <h3>Inclusive & Transparent</h3>
         <p>Open to all age groups and backgrounds, with clear, honest processes.</p>
       </div>
-      <div class="feature">
+      <div class="feature-card">
         <h3>Tailored Projects</h3>
         <p>Choose projects that match your investment level and interests.</p>
       </div>
-      <div class="feature">
+      <div class="feature-card">
         <h3>Real Business Tasks</h3>
         <p>Participate in tangible, operational projects with real returns.</p>
       </div>
@@ -197,22 +328,74 @@
 
   <section class="testimonials" id="testimonials">
     <h2>What Our Investors Say</h2>
-    <blockquote>
+    <div class="testimonial-slide active">
       "IVO CITY made it possible for me to start investing with just $50. The process was transparent and the returns exceeded my expectations!"
-    </blockquote>
-    <blockquote>
+      <div class="testimonial-author">- Tinashe M., Harare</div>
+    </div>
+    <div class="testimonial-slide">
       "As a local entrepreneur, I brought my idea and received the capital I needed. We truly grow together at IVO CITY."
-    </blockquote>
+      <div class="testimonial-author">- Rutendo C., Bulawayo</div>
+    </div>
+    <div class="testimonial-slide">
+      "Our school invested as a group and the returns are helping us fund new projects. Highly recommended!"
+      <div class="testimonial-author">- Mrs. Chikomba, School Head</div>
+    </div>
+    <div class="testimonial-controls">
+      <button class="testimonial-dot active"></button>
+      <button class="testimonial-dot"></button>
+      <button class="testimonial-dot"></button>
+    </div>
   </section>
 
   <section class="contact" id="contact">
     <h2>Contact Us</h2>
     <div class="contact-info">
-      <p>📞 +263 715 256 747</p>
-      <p>📞 +263 777 221 162</p>
-      <p>Email: info@ivocity.com</p>
+      <p>📞 <a href="tel:+263715256747">+263 715 256 747</a></p>
+      <p>📞 <a href="tel:+263777221162">+263 777 221 162</a></p>
+      <p>Email: <a href="mailto:info@ivocity.com">info@ivocity.com</a></p>
       <p>Ready to invest or have a business idea? Reach out and let's grow together!</p>
     </div>
   </section>
+
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 IVO CITY Pvt Ltd. All rights reserved.</p>
+      <p>Contact: info@ivocity.com | +263 715 256 747</p>
+    </div>
+  </footer>
+
+  <script>
+    // Testimonial carousel JS
+    const slides = document.querySelectorAll('.testimonial-slide');
+    const dots = document.querySelectorAll('.testimonial-dot');
+    let current = 0;
+
+    function showSlide(idx) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === idx);
+        dots[i].classList.toggle('active', i === idx);
+      });
+      current = idx;
+    }
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => showSlide(i));
+    });
+
+    // Auto-advance every 7 seconds
+    setInterval(() => {
+      let next = (current + 1) % slides.length;
+      showSlide(next);
+    }, 7000);
+
+    // Nav active state on click
+    const navLinks = document.querySelectorAll('nav a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        navLinks.forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+  </script>
 </body>
 </html>
